@@ -14,10 +14,10 @@ import hamburgerIcon from './assets/hamburgerIcon.svg';
 const navbarProps = {
   brandName: 'The blog',
   links: [
-    { label: 'Início', to: '/' },
-    { label: 'Sobre mim', to: '/about' },
+    { label: 'Home', to: '/' }, 
+    { label: 'About Me', to: '/about' },
     { label: 'Posts', to: '/posts' },
-    { label: 'Contate-me', to: '/contact' },
+    { label: 'Contact Me', to: '/contact' },
     { label: 'Login', to: '/signin' },
   ],
   dropdownIconSrc: hamburgerIcon,

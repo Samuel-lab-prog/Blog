@@ -96,7 +96,7 @@ export default function Navbar({
             <img
               src={dropdownIconSrc}
               alt="Dropdown"
-              className={`h-full transition-all duration-200 ${isDropdownOpen ? 'rotate-90' : ''}`}
+              className={`h-8 transition-all duration-200 opacity-75 ${isDropdownOpen ? 'rotate-90' : ''}`}
             />
           </button>
         )}
