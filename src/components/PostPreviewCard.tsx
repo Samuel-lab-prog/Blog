@@ -14,7 +14,7 @@ export default function PostPreviewCard({
   postUrl,
 }: PostPreviewCardProps) {
   return (
-    <div className="relative p-4 border rounded-md shadow-sm h-40">
+    <div className="flex flex-col align-end p-4 border rounded-md shadow-sm h-60 relative">
       <h2 className="font-bold text-xl mb-2">{title}</h2>
       <p className="text-gray-700 mb-2 wrap-break-word">{excerpt}</p>
       <div className="flex flex-wrap mb-4">
@@ -27,8 +27,8 @@ export default function PostPreviewCard({
           </span>
         ))}
       </div>
-      <Button to={postUrl} className="absolute bottom-2 right-2">
-        Read more
+      <Button to={postUrl} className="absolute bottom-4 right-4" variant="primary">
+        Ler mais
       </Button>
     </div>
   );

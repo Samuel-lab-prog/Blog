@@ -8,10 +8,10 @@ import Button from './Button';
 const schema = z.object({
   email: z
     .string()
-    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Invalid email'),
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Email inválido'),
   password: z
     .string()
-    .min(6, 'Password must be at least 6 characters'),
+    .min(6, 'Senha deve ter pelo menos 6 caracteres'),
 });
 
 export default function SigninForm() {
@@ -46,11 +46,11 @@ export default function SigninForm() {
         ) {
           setError('email', {
             type: 'manual',
-            message: 'Email or password is invalid',
+            message: 'Email ou senha inválidos',
           });
           setError('password', {
             type: 'manual',
-            message: 'Email or password is invalid',
+            message: 'Email ou senha inválidos',
           });
         }
       } else {
@@ -66,20 +66,20 @@ export default function SigninForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-sm mx-auto flex flex-col p-4 w-4/5"
+      className="flex flex-col my-4 w-full"
     >
       <Input
         label="Email"
         type="email"
-        placeholder="Type your email"
+        placeholder="Digite seu email"
         error={errors.email}
         {...register('email')}
       />
 
       <Input
-        label="Password"
+        label="Senha"
         type="password"
-        placeholder="Type your password"
+        placeholder="Digite sua senha"
         error={errors.password}
         {...register('password')}
       />
@@ -89,7 +89,7 @@ export default function SigninForm() {
         className="w-full"
         variant={isValid ? 'primary' : 'disabled'}
       >
-        {isSubmitting ? 'Sending...' : 'Sign In'}
+        {isSubmitting ? 'Enviando...' : 'Entrar'}
       </Button>
     </form>
   );

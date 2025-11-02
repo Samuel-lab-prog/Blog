@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { marked } from 'marked';
 import Input from './Input';
 import TextArea from './TextAreaInput';
 import Button from './Button';
@@ -41,7 +42,7 @@ export default function PostSubmitForm() {
         },
         body: JSON.stringify({
           title: data.title,
-          content: data.content,
+          content: marked(data.content),
           excerpt: data.excerpt,
           tags: data.tags,
           authorId: 1,

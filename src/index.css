@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Bungee&family=Comic+Relief:wght@400;700&family=Corinthia:wght@400;700&family=DM+Serif+Text:ital@0;1&family=Delius&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Londrina+Outline&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 @import 'tailwindcss';
 
 @theme static {
-  --font-primary: 'DM Serif Text', serif;
+  --font-primary: 'Inter', sans-serif;
   --font-secondary: 'Inter', sans-serif;
 }
 @layer base {
@@ -17,13 +16,19 @@
     @apply font-primary text-4xl font-semibold;
   }
   h3 {
-    @apply font-primary text-2xl font-medium;
+    @apply font-primary text-2xl font-bold;
   }
   h4 {
     @apply font-primary text-xl font-medium;
   }
   p {
     @apply font-secondary text-xs lg:text-sm;
+  }
+  li {
+    @apply font-secondary text-xs lg:text-sm;
+  }
+  i {
+    @apply font-secondary text-xs lg:text-sm italic;
   }
   span {
     @apply font-secondary text-xs lg:text-sm font-bold;
@@ -38,7 +43,7 @@
 
 @layer components {
   .btn {
-    @apply font-secondary px-4 py-2 rounded transition-all cursor-pointer inline-flex items-center justify-center text-sm;
+    @apply font-secondary px-4 py-2 rounded transition-all cursor-pointer inline-flex items-center justify-center text-xs lg:text-sm;
   }
   .btn-primary {
     @apply bg-neutral-900 text-gray-100 hover:opacity-75;
@@ -50,7 +55,7 @@
     @apply cursor-not-allowed bg-neutral-900 text-gray-100 opacity-25;
   }
   .anchor {
-    @apply cursor-pointer hover:opacity-50 transition-opacity duration-200 text-xs;
+    @apply cursor-pointer hover:opacity-50 transition-opacity duration-200 text-xs lg:text-sm;
   }
   .active-anchor {
     @apply underline underline-offset-4 font-bold;

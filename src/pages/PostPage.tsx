@@ -8,20 +8,25 @@ export default function PostPage() {
   if (!post) {
     return <div className="max-w-3xl mx-auto p-4">Loading...</div>;
   }
+
   return (
-    <main className="p-4 mt-20">
-      <h1 className="text-3xl font-bold">{post.title}</h1>
+    <main className="px-4 py-12 absolute top-20 w-full h-fit flex flex-col items-center gap-y-12 ">
+      <section className='max-w-xl w-full'>
+      <h2 className="">{post.title}</h2>
+      <p>{post.excerpt}</p>
       {post.tags.map((tag, i) => (
-        <span
+        <i
           key={`${tag}-${i}`}
           className="inline-block bg-gray-200 mr-2 text-gray-400 "
         >
           {tag}
-        </span>
+        </i>
       ))}
-      <p className="mb-4 text-justify mt-4 wrap-break-word">
-        {post.content}
-      </p>
+      </section >
+      <section
+        className="max-w-xl w-full text-justify"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
     </main>
   );
 }

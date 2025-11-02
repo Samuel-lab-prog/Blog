@@ -21,11 +21,11 @@ export default function App() {
     brandName: 'The blog',
     links: [
       { label: 'Home', to: '/' },
-      { label: 'About', to: '/about' },
+      { label: 'Sobre', to: '/about' },
       { label: 'Posts', to: '/posts' },
-      { label: 'Contact', to: '/contact' },
+      { label: 'Contato', to: '/contact' },
       { label: 'Login', to: '/signin' },
-      ...(isAdmin ? [{ label: 'Submit', to: '/submit' }] : []),
+      ...(isAdmin ? [{ label: 'Enviar Post', to: '/submit' }] : []),
     ],
     dropdownIconSrc: hamburgerIcon,
   };
@@ -45,10 +45,10 @@ export default function App() {
         { index: true, element: <HomePage /> },
         { path: '/submit', element: <PostSubmitPage /> },
         { path: 'posts/:slug', element: <PostPage /> },
+        { path: '/signup', element: <SignupPage /> },
+        { path: '/signin', element: <SigninPage /> },
       ],
     },
-    { path: '/signup', element: <SignupPage /> },
-    { path: '/signin', element: <SigninPage /> },
   ]);
 
   return <RouterProvider router={router} />;

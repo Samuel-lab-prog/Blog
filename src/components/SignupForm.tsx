@@ -8,21 +8,21 @@ import Button from './Button';
 const schema = z.object({
   firstName: z
     .string()
-    .min(3, 'Name must be at least 3 characters long')
-    .max(30, 'Name must be at most 30 characters long'),
+    .min(3, 'Nome deve ter pelo menos 3 caracteres')
+    .max(30, 'Nome deve ter no máximo 30 caracteres'),
   lastName: z
     .string()
-    .min(3, 'Last name must be at least 3 characters long')
-    .max(30, 'Last name must be at most 30 characters long'),
+    .min(3, 'Sobrenome deve ter pelo menos 3 caracteres')
+    .max(30, 'Sobrenome deve ter no máximo 30 caracteres'),
   email: z
     .string()
-    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Invalid email'),
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Email inválido'),
   password: z
     .string()
-    .min(6, 'Password must be at least 6 characters long'),
+    .min(6, 'Senha deve ter pelo menos 6 caracteres'),
 });
 
-export default function SigninForm() {
+export default function SignupForm() {
   const navigate = useNavigate();
   const {
     register,
@@ -51,12 +51,10 @@ export default function SigninForm() {
         if (errorData.statusCode === 409) {
           setError('email', {
             type: 'manual',
-            message: 'Email already in use',
+            message: 'Email já está em uso',
           });
         }
       } else {
-        const responseData = await response.json().catch(() => ({}));
-        console.log('Registration successful!', responseData);
         navigate('/signin');
       }
     } catch (error) {
@@ -67,18 +65,18 @@ export default function SigninForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-sm mx-auto flex flex-col p-4 w-4/5"
+      className="flex flex-col my-4 w-full"
     >
       <Input
-        label="First Name"
-        placeholder="Type your first name"
+        label="Primeiro Nome"
+        placeholder="Digite seu primeiro nome"
         error={errors.firstName}
         {...register('firstName')}
       />
 
       <Input
-        label="Last Name"
-        placeholder="Type your last name"
+        label="Sobrenome"
+        placeholder="Digite seu sobrenome"
         error={errors.lastName}
         {...register('lastName')}
       />
@@ -86,15 +84,15 @@ export default function SigninForm() {
       <Input
         label="Email"
         type="email"
-        placeholder="Type your email"
+        placeholder="Digite seu email"
         error={errors.email}
         {...register('email')}
       />
 
       <Input
-        label="Password"
+        label="Senha"
         type="password"
-        placeholder="Type your password"
+        placeholder="Digite sua senha"
         error={errors.password}
         {...register('password')}
       />
@@ -104,7 +102,7 @@ export default function SigninForm() {
         className="w-full"
         variant={isValid ? 'primary' : 'disabled'}
       >
-        {isSubmitting ? 'Sending...' : 'Create Account'}
+        {isSubmitting ? 'Enviando...' : 'Criar Conta'}
       </Button>
     </form>
   );
