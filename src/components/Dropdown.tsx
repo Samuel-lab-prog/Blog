@@ -7,7 +7,7 @@ type DropdownProps = {
 };
 
 const menuClasses =
-  'md:hidden fixed top-20 right-0 bg-gray-200 border-l-2 border-gray-300 shadow-lg p-5 z-30 w-48 h-full flex flex-col gap-y-3 transition-transform duration-300 ease-in-out overflow-hidden';
+  'md:hidden fixed top-0 right-0 bg-gray-200 border-l-2 border-gray-300 shadow-lg px-5 pt-24 z-30 w-48 h-full flex flex-col gap-y-3 transition-transform duration-300 ease-in-out overflow-hidden';
 
 export default function Dropdown({
   links,

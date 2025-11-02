@@ -10,6 +10,7 @@ type NavbarProps = {
   dropdownIconSrc?: string;
 };
 
+
 export default function Navbar({
   brandName,
   links,
@@ -40,7 +41,7 @@ export default function Navbar({
     (scrollDirection === 'down'
       ? ' translate-y-[-100%]'
       : 'translate-y-0');
-  const linkListClasses = 'hidden md:flex gap-x-4 md:ml-12 mt-3';
+  const linkListClasses = 'hidden md:flex gap-x-4 md:ml-6 mt-3';
   const navigate = useNavigate();
   return (
     <>
@@ -51,7 +52,7 @@ export default function Navbar({
       />
 
       <nav className={navClasses}>
-        <h2
+        <h3
           onClick={() => {
             navigate('/');
             setIsDropdownOpen(false);
@@ -64,7 +65,7 @@ export default function Navbar({
           className="text-gray-900 hover:cursor-pointer hover:opacity-50 transition-all duration-200"
         >
           {brandName}
-        </h2>
+        </h3>
 
         <ul className={linkListClasses}>
           {links.map((link) => (
