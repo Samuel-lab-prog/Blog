@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export default function useIsAdmin() {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
   useEffect(() => {
     const userInfo = localStorage.getItem('user');
     if (userInfo) {

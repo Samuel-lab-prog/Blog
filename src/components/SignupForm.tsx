@@ -27,7 +27,7 @@ export default function SigninForm() {
   const {
     register,
     handleSubmit,
-    setError, 
+    setError,
     formState: { errors, isValid, isSubmitting },
   } = useForm({
     resolver: zodResolver(schema),
@@ -36,17 +36,23 @@ export default function SigninForm() {
 
   async function onSubmit(data: z.infer<typeof schema>) {
     try {
-      const response = await fetch('http://localhost:5000/users/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        'http://localhost:5000/users/register',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      );
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         if (errorData.statusCode === 409) {
-          setError('email', { type: 'manual', message: 'Email already in use' });
+          setError('email', {
+            type: 'manual',
+            message: 'Email already in use',
+          });
         }
       } else {
         const responseData = await response.json().catch(() => ({}));

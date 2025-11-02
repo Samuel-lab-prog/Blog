@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignupPage';
 import SigninPage from './pages/SigninPage';
 import PostSubmitPage from './pages/PostSubmitPage';
+import PostPage from './pages/PostPage';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 import AnimatedOutlet from './components/AnimatedOutlet';
@@ -43,6 +44,7 @@ export default function App() {
       children: [
         { index: true, element: <HomePage /> },
         { path: '/submit', element: <PostSubmitPage /> },
+        { path: 'posts/:slug', element: <PostPage /> },
       ],
     },
     { path: '/signup', element: <SignupPage /> },

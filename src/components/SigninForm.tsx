@@ -19,7 +19,7 @@ export default function SigninForm() {
   const {
     register,
     handleSubmit,
-    setError, 
+    setError,
     formState: { errors, isValid, isSubmitting },
   } = useForm({
     resolver: zodResolver(schema),
@@ -28,18 +28,30 @@ export default function SigninForm() {
 
   async function onSubmit(data: z.infer<typeof schema>) {
     try {
-      const response = await fetch('http://localhost:5000/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        'http://localhost:5000/users/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      );
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        if (errorData.statusCode === 401 || errorData.statusCode === 404) {
-          setError('email', { type: 'manual', message: 'Email or password is invalid' });
-          setError('password', { type: 'manual', message: 'Email or password is invalid' });
+        if (
+          errorData.statusCode === 401 ||
+          errorData.statusCode === 404
+        ) {
+          setError('email', {
+            type: 'manual',
+            message: 'Email or password is invalid',
+          });
+          setError('password', {
+            type: 'manual',
+            message: 'Email or password is invalid',
+          });
         }
       } else {
         const responseData = await response.json().catch(() => ({}));

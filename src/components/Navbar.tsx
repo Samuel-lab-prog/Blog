@@ -10,7 +10,6 @@ type NavbarProps = {
   dropdownIconSrc?: string;
 };
 
-
 export default function Navbar({
   brandName,
   links,

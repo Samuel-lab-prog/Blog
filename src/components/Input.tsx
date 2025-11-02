@@ -14,9 +14,7 @@ export default function Input({
 }: InputProps) {
   return (
     <div className="flex flex-col">
-      {label && (
-        <label className="text-gray-700">{label}</label>
-      )}
+      {label && <label className="text-gray-700">{label}</label>}
       <input
         type={type}
         placeholder={placeholder}
@@ -25,12 +23,9 @@ export default function Input({
         }`}
         {...props}
       />
-      <div className='h-8'>
-
-      {error && (
-        <p className=" text-red-500">{error.message}</p>
-      )}
+      <div className="h-8">
+        {error && <p className=" text-red-500">{error.message}</p>}
       </div>
-      </div>
+    </div>
   );
 }

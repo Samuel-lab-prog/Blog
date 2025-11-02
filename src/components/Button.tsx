@@ -74,7 +74,6 @@ export default function Button({
       onClick={onClick}
       disabled={variant === 'disabled'}
       type={type}
-
     >
       {content}
     </button>

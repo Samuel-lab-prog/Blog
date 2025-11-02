@@ -1,4 +1,4 @@
-import { type FieldError } from "react-hook-form";
+import { type FieldError } from 'react-hook-form';
 
 type TextAreaProps = {
   label?: string;
@@ -10,7 +10,7 @@ type TextAreaProps = {
 export default function TextArea({
   label,
   error,
-  placeholder = "Type here",
+  placeholder = 'Type here',
   rows = 4,
   ...props
 }: TextAreaProps) {
@@ -21,7 +21,9 @@ export default function TextArea({
         placeholder={placeholder}
         rows={rows}
         className={`text-input resize-none p-2 border rounded focus:outline-none focus:ring-2 ${
-          error ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+          error
+            ? 'border-red-500 focus:ring-red-500'
+            : 'border-gray-300 focus:ring-blue-500'
         }`}
         {...props}
       />
