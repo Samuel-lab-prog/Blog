@@ -2,7 +2,7 @@ import PostPreviewCard from '../components/PostPreviewCard';
 import useFetchPosts from '../hooks/useFetchPosts';
 
 export default function Home() {
-  const posts = useFetchPosts();
+  const posts = useFetchPosts(6);
   return (
     <main className="absolute w-full h-full left-0 top-20 flex flex-col items-center">
       <section className="px-4 xl:px-12 w-full">

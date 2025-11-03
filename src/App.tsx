@@ -8,6 +8,7 @@ import SignupPage from './pages/SignupPage';
 import SigninPage from './pages/SigninPage';
 import PostSubmitPage from './pages/PostSubmitPage';
 import PostPage from './pages/PostPage';
+import AllPostsPage from './pages/AllPostsPage';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 import AnimatedOutlet from './components/AnimatedOutlet';
@@ -47,6 +48,7 @@ export default function App() {
         { path: 'posts/:slug', element: <PostPage /> },
         { path: '/signup', element: <SignupPage /> },
         { path: '/signin', element: <SigninPage /> },
+        { path: '/posts', element: <AllPostsPage /> },
       ],
     },
   ]);

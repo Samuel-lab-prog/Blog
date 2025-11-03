@@ -11,12 +11,12 @@ export type Post = {
   updatedAt: string;
   tags: string[];
 };
-export default function useFetchPosts() {
+export default function useFetchPosts(limit?: number) {
   const [posts, setPosts] = useState<Post[]>([]);
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await fetch('http://localhost:5000/posts');
+        const response = await fetch(`http://localhost:5000/posts?limit=${limit}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -30,6 +30,6 @@ export default function useFetchPosts() {
       }
     }
     fetchPosts();
-  }, []);
+  }, [limit]);
   return posts;
 }
