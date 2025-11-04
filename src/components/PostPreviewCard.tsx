@@ -27,7 +27,11 @@ export default function PostPreviewCard({
           </span>
         ))}
       </div>
-      <Button to={postUrl} className="absolute bottom-4 right-4" variant="primary">
+      <Button
+        to={postUrl}
+        className="absolute bottom-4 right-4"
+        variant="primary"
+      >
         Ler mais
       </Button>
     </div>

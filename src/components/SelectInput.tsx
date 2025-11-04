@@ -20,9 +20,7 @@ export default function SelectInput({
         defaultValue="Todos"
         {...props}
       >
-        <option value={""}>
-          Todos
-        </option>
+        <option value={''}>Todos</option>
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
             {opt.label}
@@ -30,11 +28,8 @@ export default function SelectInput({
         ))}
       </select>
 
-
       <div className="h-8">
-        {error && (
-          <p className="text-red-500">{error.message}</p>
-        )}
+        {error && <p className="text-red-500">{error.message}</p>}
       </div>
     </div>
   );

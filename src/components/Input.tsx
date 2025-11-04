@@ -24,7 +24,11 @@ export default function Input({
         {...props}
       />
       <div className="h-8">
-        {error && <p className=" text-red-500 wrap-break-word">{error.message}</p>}
+        {error && (
+          <p className=" text-red-500 wrap-break-word">
+            {error.message}
+          </p>
+        )}
       </div>
     </div>
   );
