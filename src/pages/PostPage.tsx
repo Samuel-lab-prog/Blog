@@ -6,13 +6,13 @@ export default function PostPage() {
   const post = useGetPostBySlug(slug as string);
 
   if (!post) {
-    return <div className="max-w-3xl mx-auto p-4">Loading...</div>;
+    return <div className="max-w-3xl mx-auto p-4 text-gray-800">Loading...</div>;
   }
 
   return (
-    <main className="px-4 py-12 absolute top-20 w-full h-fit flex flex-col items-center gap-y-12 ">
+    <main className="px-4 py-12 absolute top-20 w-full flex flex-col items-center gap-y-12 ">
       <section className='max-w-xl w-full'>
-      <h2 className="">{post.title}</h2>
+      <h2>{post.title}</h2>
       <p>{post.excerpt}</p>
       {post.tags.map((tag, i) => (
         <i

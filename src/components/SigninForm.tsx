@@ -39,7 +39,7 @@ export default function SigninForm() {
         }
       );
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
+        const errorData = await response.json();
         if (
           errorData.statusCode === 401 ||
           errorData.statusCode === 404
@@ -54,7 +54,7 @@ export default function SigninForm() {
           });
         }
       } else {
-        const responseData = await response.json().catch(() => ({}));
+        const responseData = await response.json();
         localStorage.setItem('user', JSON.stringify(responseData));
         navigate('/');
       }

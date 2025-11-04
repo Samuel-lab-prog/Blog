@@ -39,6 +39,12 @@
   label {
     @apply font-secondary text-xs lg:text-sm font-medium;
   }
+  select {
+    @apply font-secondary text-xs lg:text-sm;
+  }
+  textarea {
+    @apply font-secondary text-xs lg:text-sm;
+  }
 }
 
 @layer components {

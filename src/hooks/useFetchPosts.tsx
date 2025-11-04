@@ -1,25 +1,23 @@
 import { useState, useEffect } from 'react';
+import type { Post } from '../types/types';
 
-export type Post = {
-  id: number;
-  title: string;
-  slug: string;
-  content: string;
-  excerpt: string;
-  authorId: number;
-  createdAt: string;
-  updatedAt: string;
-  tags: string[];
-};
-export default function useFetchPosts(limit?: number) {
+export default function useFetchPosts(limit?: number, tag?: string | null): Post[] {
   const [posts, setPosts] = useState<Post[]>([]);
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await fetch(`http://localhost:5000/posts?limit=${limit}`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+        const url = new URL('http://localhost:5000/posts');
+
+        if (limit) {
+          url.searchParams.append('limit', limit.toString());
         }
+        if (tag && tag.trim() !== '') {
+          url.searchParams.append('tag', tag);
+        }
+        const response = await fetch(url.toString());
+        if (!response.ok)
+          throw new Error('Network response was not ok' + response.statusText );
+
         const posts = await response.json();
         setPosts(posts);
       } catch (error) {
@@ -30,6 +28,6 @@ export default function useFetchPosts(limit?: number) {
       }
     }
     fetchPosts();
-  }, [limit]);
+  }, [limit, tag]);
   return posts;
 }

@@ -47,7 +47,7 @@ export default function SignupForm() {
         }
       );
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
+        const errorData = await response.json();
         if (errorData.statusCode === 409) {
           setError('email', {
             type: 'manual',

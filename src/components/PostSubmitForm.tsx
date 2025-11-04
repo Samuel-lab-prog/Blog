@@ -9,17 +9,17 @@ import Button from './Button';
 const schema = z.object({
   title: z
     .string()
-    .min(3, 'Title must be at least 3 characters long')
-    .max(30, 'Title must be at most 30 characters long'),
+    .min(3, 'Nome deve ter pelo menos 3 caracteres')
+    .max(150, 'Nome deve ter no máximo 150 caracteres'),
   content: z
     .string()
-    .min(100, 'Content must be at least 100 characters long'),
+    .min(150, 'Conteúdo deve ter pelo menos 150 caracteres'),
   tags: z.array(
-    z.string().min(2, 'Each tag must be at least 2 characters long')
+    z.string().min(3, 'Cada tag deve ter pelo menos 3 caracteres')
   ),
   excerpt: z
     .string()
-    .max(100, 'Excerpt must be at most 100 characters long'),
+    .max(150, 'Resumo deve ter no máximo 150 caracteres'),
 });
 
 export default function PostSubmitForm() {
@@ -52,7 +52,7 @@ export default function PostSubmitForm() {
         const errorData = await response.json().catch(() => ({}));
         setError('title', {
           type: 'server',
-          message: errorData.errorMessages || 'Failed to create post',
+          message: errorData.errorMessages || 'Falha ao criar post',
         });
         return;
       }
@@ -64,31 +64,31 @@ export default function PostSubmitForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col p-4 w-full max-w-xl gap-4"
+      className="flex flex-col p-4 w-full max-w-xl"
     >
       <Input
-        label="Title"
-        placeholder="Type your post title"
+        label="Título"
+        placeholder="Digite o título do seu post"
         error={errors.title}
         {...register('title')}
       />
       <TextArea
-        label="Excerpt"
-        placeholder="Type your post excerpt"
+        label="Resumo"
+        placeholder="Digite o resumo do seu post"
         error={errors.excerpt}
         {...register('excerpt')}
       />
       <TextArea
-        label="Content"
-        placeholder="Type your post content"
+        label="Conteúdo"
+        placeholder="Digite o conteúdo do seu post (Markdown suportado)"
         error={errors.content}
         rows={6}
         {...register('content')}
       />
 
       <Input
-        label="Tags (comma separated)"
-        placeholder="e.g. programming, react, cloud"
+        label="Tags (separadas por vírgula)"
+        placeholder="ex: programação, react, nuvem"
         error={
           errors.tags
             ? { type: 'manual', message: errors.tags[0]?.message }
@@ -108,7 +108,7 @@ export default function PostSubmitForm() {
         variant={isValid ? 'primary' : 'disabled'}
         disabled={!isValid || isSubmitting}
       >
-        {isSubmitting ? 'Sending...' : 'Create Post'}
+        {isSubmitting ? 'Enviando...' : 'Criar Post'}
       </Button>
     </form>
   );

@@ -9,7 +9,6 @@ export default function SelectInput({
   label,
   error,
   options,
-  placeholder = 'Select an option',
   ...props
 }: SelectInputProps) {
   return (
@@ -17,13 +16,12 @@ export default function SelectInput({
       {label && <label className="text-gray-700">{label}</label>}
 
       <select
-        className={`text-input ${
-          error ? 'focus:ring-red-500' : 'focus:ring-blue-500'
-        }`}
+        className={`text-input ${error ? 'focus:ring-red-500' : 'focus:ring-blue-500'}`}
+        defaultValue="Todos"
         {...props}
       >
-        <option value="" disabled selected>
-          {placeholder}
+        <option value={""}>
+          Todos
         </option>
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
@@ -31,6 +29,7 @@ export default function SelectInput({
           </option>
         ))}
       </select>
+
 
       <div className="h-8">
         {error && (
