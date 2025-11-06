@@ -3,7 +3,7 @@ import useFetchPosts from '../hooks/useFetchPosts';
 import { useEffect } from 'react';
 
 export default function Home() {
-  const posts = useFetchPosts(6);
+  const posts = useFetchPosts(3);
   useEffect(() => {
     localStorage.setItem('posts', JSON.stringify(posts));
   }, [posts]);

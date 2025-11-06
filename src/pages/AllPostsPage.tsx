@@ -1,29 +1,14 @@
 import { useState } from 'react';
-
 import PostPreviewCard from '../components/PostPreviewCard';
 import useFetchPosts from '../hooks/useFetchPosts';
 import useFetchTags from '../hooks/useFetchTags';
 import Button from '../components/Button';
 import SelectInput from '../components/SelectInput';
-import type { Post } from '../types/types';
 
 export default function Home() {
   const [tag, setTag] = useState<string | null>(null);
   const [limit, setLimit] = useState<number>(3);
-  let posts = null;
-  
-  const storedPosts = localStorage.getItem('posts');
-  if (storedPosts) {
-    try {
-      posts = JSON.parse(storedPosts) as Omit<Post, 'content' | 'authorId'>[];
-    } catch {
-      alert('Erro ao carregar posts do armazenamento local.');
-      posts = useFetchPosts(limit, tag);
-    }
-  } else {
-    alert('Carregando posts do servidor.');
-    posts = useFetchPosts(limit, tag);
-  }
+  const posts = useFetchPosts(limit, tag);
   const tags = useFetchTags();
 
   return (
