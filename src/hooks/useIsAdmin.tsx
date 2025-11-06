@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 export default function useIsAdmin() {
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   useEffect(() => {
-    console.log('Document cookies:', document.cookie.length);
     try {
       fetch('http://localhost:5000/users/auth', {
         method: 'GET',

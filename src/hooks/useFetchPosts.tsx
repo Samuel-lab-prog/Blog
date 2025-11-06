@@ -4,8 +4,8 @@ import type { Post } from '../types/types';
 export default function useFetchPosts(
   limit?: number,
   tag?: string | null
-): Post[] {
-  const [posts, setPosts] = useState<Post[]>([]);
+): Omit<Post, 'content' | 'authorId'>[] {
+  const [posts, setPosts] = useState<Omit<Post, 'content' | 'authorId'>[]>([]);
   useEffect(() => {
     async function fetchPosts() {
       try {
