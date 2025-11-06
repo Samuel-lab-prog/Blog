@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 import Input from './Input';
 import Button from './Button';
+import Cookie from 'js-cookie';
 
 const schema = z.object({
   email: z
@@ -28,10 +29,12 @@ export default function SigninForm() {
 
   async function onSubmit(data: z.infer<typeof schema>) {
     try {
+      Cookie.set('token', ''); 
       const response = await fetch(
         'http://localhost:5000/users/login',
         {
           method: 'POST',
+          credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
           },
