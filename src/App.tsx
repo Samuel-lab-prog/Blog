@@ -6,7 +6,6 @@ import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignupPage';
 import SigninPage from './pages/SigninPage';
-import PostSubmitPage from './pages/PostSubmitPage';
 import PostPage from './pages/PostPage';
 import AllPostsPage from './pages/AllPostsPage';
 import Navbar from './components/Navbar';
@@ -14,6 +13,7 @@ import ScrollToTop from './components/ScrollToTop';
 import AnimatedOutlet from './components/AnimatedOutlet';
 import useIsAdmin from './hooks/useIsAdmin';
 import hamburgerIcon from './assets/hamburgerIcon.svg';
+import AdminPage from './pages/AdminPage';
 
 export default function App() {
   const isAdmin = useIsAdmin();
@@ -26,7 +26,7 @@ export default function App() {
       { label: 'Posts', to: '/posts' },
       { label: 'Contato', to: '/contact' },
       { label: 'Login', to: '/signin' },
-      ...(isAdmin ? [{ label: 'Enviar Post', to: '/submit' }] : []),
+      ...(isAdmin ? [{ label: 'Admin', to: '/admin' }] : []),
     ],
     dropdownIconSrc: hamburgerIcon,
   };
@@ -44,7 +44,7 @@ export default function App() {
       ),
       children: [
         { index: true, element: <HomePage /> },
-        { path: '/submit', element: <PostSubmitPage /> },
+        { path: '/admin', element: <AdminPage /> },
         { path: 'posts/:slug', element: <PostPage /> },
         { path: '/signup', element: <SignupPage /> },
         { path: '/signin', element: <SigninPage /> },

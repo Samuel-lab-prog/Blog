@@ -36,6 +36,7 @@ export default function PostSubmitForm() {
   async function onSubmit(data: z.infer<typeof schema>) {
     try {
       const response = await fetch('http://localhost:5000/posts', {
+        credentials: 'include',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +65,7 @@ export default function PostSubmitForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col p-4 w-full max-w-xl"
+      className="flex flex-col p-4 w-full"
     >
       <Input
         label="Título"
