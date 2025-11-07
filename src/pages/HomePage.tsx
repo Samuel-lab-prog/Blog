@@ -1,12 +1,7 @@
 import PostPreviewCard from '../components/PostPreviewCard';
 import useFetchPosts from '../hooks/useFetchPosts';
-import { useEffect } from 'react';
-
 export default function Home() {
   const posts = useFetchPosts(3);
-  useEffect(() => {
-    localStorage.setItem('posts', JSON.stringify(posts));
-  }, [posts]);
   return (
     <main className="absolute left-0 top-20 flex flex-col items-center">
       <section className="p-4 xl:p-12">

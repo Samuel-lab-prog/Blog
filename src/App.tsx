@@ -9,6 +9,7 @@ import SigninPage from './pages/SigninPage';
 import PostPage from './pages/PostPage';
 import AllPostsPage from './pages/AllPostsPage';
 import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 import ScrollToTop from './components/ScrollToTop';
 import AnimatedOutlet from './components/AnimatedOutlet';
 import useIsAdmin from './hooks/useIsAdmin';
@@ -44,7 +45,10 @@ export default function App() {
       ),
       children: [
         { index: true, element: <HomePage /> },
-        { path: '/admin', element: <AdminPage /> },
+        
+        { path: '/admin', element: <ProtectedRoute />, children: [
+          { index: true, element: <AdminPage /> },
+        ] },
         { path: 'posts/:slug', element: <PostPage /> },
         { path: '/signup', element: <SignupPage /> },
         { path: '/signin', element: <SigninPage /> },

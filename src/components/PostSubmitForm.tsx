@@ -9,8 +9,8 @@ import Button from './Button';
 const schema = z.object({
   title: z
     .string()
-    .min(3, 'Nome deve ter pelo menos 3 caracteres')
-    .max(150, 'Nome deve ter no máximo 150 caracteres'),
+    .min(3, 'Título deve ter pelo menos 3 caracteres')
+    .max(150, 'Título deve ter no máximo 150 caracteres'),
   content: z
     .string()
     .min(150, 'Conteúdo deve ter pelo menos 150 caracteres'),
@@ -19,7 +19,6 @@ const schema = z.object({
   ),
   excerpt: z
     .string()
-    .max(150, 'Resumo deve ter no máximo 150 caracteres'),
 });
 
 export default function PostSubmitForm() {

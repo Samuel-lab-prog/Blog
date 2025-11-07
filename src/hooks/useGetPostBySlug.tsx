@@ -1,10 +1,22 @@
 import { useEffect, useState } from 'react';
 import type { Post } from '../types/types';
 
-export default function useGetPostBySlug(slug: string): Post | null {
-  const [post, setPost] = useState<Post | null>(null);
+export default function useGetPostBySlug(slug: string): Omit<Post, "content" | "authorId"> | null {
+  const [post, setPost] = useState<Omit<Post, "content" | "authorId"> | null>(null);
   useEffect(() => {
     if (!slug) return;
+    const storedPost = localStorage.getItem(`post_${slug}`);
+    if (storedPost) {
+      try {
+        const parsed = JSON.parse(storedPost);
+        if (parsed) {
+          setPost(parsed);
+        }
+      } catch {
+        localStorage.removeItem(`post_${slug}`);
+      }
+    }
+
     async function fetchPost() {
       try {
         const response = await fetch(

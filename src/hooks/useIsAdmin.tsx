@@ -1,24 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export default function useIsAdmin() {
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null); 
   useEffect(() => {
-    try {
-      fetch('http://localhost:5000/users/auth', {
-        method: 'GET',
-        credentials: 'include',
-      })
-        .then((response) => {
-          if (response.status === 204) {
-            setIsAdmin(true);
-          }
-        })
-        .catch((error) => {
-          console.error('Error fetching admin status:', error);
+    let canceled = false;
+
+    async function checkAdmin() {
+      try {
+        const res = await fetch("http://localhost:5000/users/auth", {
+          credentials: "include",
         });
-    } catch (error) {
-      console.error('Error:', error);
+        const data = await res.json().catch(() => ({}));
+        console.log("Dados recebidos:", data.isAdmin);
+
+        if (!canceled) {
+          setIsAdmin(Boolean(data.isAdmin)); 
+        }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {
+        if (!canceled) setIsAdmin(false);
+      }
     }
+
+    checkAdmin();
+
+    return () => {
+      canceled = true; 
+    };
   }, []);
+
+
   return isAdmin;
 }
