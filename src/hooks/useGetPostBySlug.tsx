@@ -3,10 +3,10 @@ import type { Post } from '../types/types';
 
 export default function useGetPostBySlug(
   slug: string
-): Omit<Post, 'content' | 'authorId'> | null {
+): Omit<Post, 'authorId'> | null {
   const [post, setPost] = useState<Omit<
     Post,
-    'content' | 'authorId'
+    'authorId'
   > | null>(null);
   useEffect(() => {
     if (!slug) return;
