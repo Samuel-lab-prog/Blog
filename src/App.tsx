@@ -25,7 +25,6 @@ export default function App() {
       { label: 'Home', to: '/' },
       { label: 'Sobre', to: '/about' },
       { label: 'Posts', to: '/posts' },
-      { label: 'Contato', to: '/contact' },
       { label: 'Login', to: '/signin' },
       ...(isAdmin ? [{ label: 'Admin', to: '/admin' }] : []),
     ],
@@ -45,10 +44,12 @@ export default function App() {
       ),
       children: [
         { index: true, element: <HomePage /> },
-        
-        { path: '/admin', element: <ProtectedRoute />, children: [
-          { index: true, element: <AdminPage /> },
-        ] },
+
+        {
+          path: '/admin',
+          element: <ProtectedRoute />,
+          children: [{ index: true, element: <AdminPage /> }],
+        },
         { path: 'posts/:slug', element: <PostPage /> },
         { path: '/signup', element: <SignupPage /> },
         { path: '/signin', element: <SigninPage /> },

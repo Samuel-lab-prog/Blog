@@ -1,5 +1,5 @@
-import { Navigate, Outlet } from "react-router-dom";
-import useIsAdmin from "../hooks/useIsAdmin";
+import { Navigate, Outlet } from 'react-router-dom';
+import useIsAdmin from '../hooks/useIsAdmin';
 
 export default function ProtectedRoute() {
   const isAuth = useIsAdmin();

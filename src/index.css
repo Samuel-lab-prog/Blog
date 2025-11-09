@@ -18,31 +18,34 @@
     @apply font-primary text-2xl font-bold;
   }
   h4 {
-    @apply font-primary text-xl font-medium;
+    @apply font-primary text-xl font-bold;
+  }
+  h5 {
+    @apply font-primary text-lg font-semibold;
   }
   p {
-    @apply font-secondary text-xs lg:text-sm;
+    @apply font-secondary text-sm lg:text-base;
   }
   li {
-    @apply font-secondary text-xs lg:text-sm;
+    @apply font-secondary text-sm lg:text-base;
   }
   i {
-    @apply font-secondary text-xs lg:text-sm italic;
+    @apply font-secondary text-sm lg:text-base italic;
   }
   span {
-    @apply font-secondary text-xs lg:text-sm font-bold;
+    @apply font-secondary text-sm lg:text-base font-bold;
   }
   input {
-    @apply font-secondary text-xs lg:text-sm;
+    @apply font-secondary text-sm lg:text-base;
   }
   label {
-    @apply font-secondary text-xs lg:text-sm font-medium;
+    @apply font-secondary text-sm lg:text-base font-medium;
   }
   select {
-    @apply font-secondary text-xs lg:text-sm;
+    @apply font-secondary text-sm lg:text-base;
   }
   textarea {
-    @apply font-secondary text-xs lg:text-sm;
+    @apply font-secondary text-sm lg:text-base;
   }
 }
 
@@ -60,7 +63,7 @@
     @apply cursor-not-allowed bg-neutral-900 text-gray-100 opacity-25;
   }
   .anchor {
-    @apply cursor-pointer hover:opacity-50 transition-opacity duration-200 text-xs lg:text-sm;
+    @apply cursor-pointer hover:opacity-50 transition-opacity duration-200 text-sm lg:text-base;
   }
   .active-anchor {
     @apply underline underline-offset-4 font-bold;

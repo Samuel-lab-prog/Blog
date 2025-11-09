@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
 import type { Post } from '../types/types';
 
-export default function useGetPostBySlug(slug: string): Omit<Post, "content" | "authorId"> | null {
-  const [post, setPost] = useState<Omit<Post, "content" | "authorId"> | null>(null);
+export default function useGetPostBySlug(
+  slug: string
+): Omit<Post, 'content' | 'authorId'> | null {
+  const [post, setPost] = useState<Omit<
+    Post,
+    'content' | 'authorId'
+  > | null>(null);
   useEffect(() => {
     if (!slug) return;
     const storedPost = localStorage.getItem(`post_${slug}`);

@@ -24,13 +24,16 @@ export default function PostDeleteForm() {
 
   async function onSubmit(data: z.infer<typeof schema>) {
     try {
-      const response = await fetch(`http://localhost:5000/posts/${data.title}`, {
-        credentials: 'include',
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await fetch(
+        `http://localhost:5000/posts/${data.title}`,
+        {
+          credentials: 'include',
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         setError('title', {

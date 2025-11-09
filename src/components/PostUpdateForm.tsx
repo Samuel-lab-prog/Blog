@@ -7,12 +7,16 @@ import TextArea from './TextAreaInput';
 import Button from './Button';
 
 const schema = z.object({
-  id: z
-    .string()
-    .regex(/^\d+$/, 'ID deve ser um número válido'),
+  id: z.string().regex(/^\d+$/, 'ID deve ser um número válido'),
   title: z.string().optional(),
-  excerpt: z.string().max(150, 'Resumo deve ter no máximo 150 caracteres').optional(),
-  content: z.string().min(100, 'Conteúdo deve ter pelo menos 150 caracteres').optional(),
+  excerpt: z
+    .string()
+    .max(150, 'Resumo deve ter no máximo 150 caracteres')
+    .optional(),
+  content: z
+    .string()
+    .min(100, 'Conteúdo deve ter pelo menos 150 caracteres')
+    .optional(),
   tags: z.array(z.string()).optional(),
 });
 
@@ -27,7 +31,9 @@ export default function PostUpdateForm() {
     mode: 'onChange',
   });
 
-  function removeEmptyFields<T extends Record<string, unknown>>(obj: T): Partial<T> {
+  function removeEmptyFields<T extends Record<string, unknown>>(
+    obj: T
+  ): Partial<T> {
     const cleaned: Partial<T> = {};
     const keys = Object.keys(obj) as (keyof T)[];
     for (const key of keys) {
@@ -49,21 +55,27 @@ export default function PostUpdateForm() {
     const cleanedUpdates = removeEmptyFields(updates);
 
     if (cleanedUpdates.content) {
-      cleanedUpdates.content = await marked(String(cleanedUpdates.content));
+      cleanedUpdates.content = await marked(
+        String(cleanedUpdates.content)
+      );
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/posts/${id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(cleanedUpdates),
-      });
+      const response = await fetch(
+        `http://localhost:5000/posts/${id}`,
+        {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(cleanedUpdates),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         setError('id', {
           type: 'server',
-          message: errorData.errorMessages || 'Falha ao atualizar post',
+          message:
+            errorData.errorMessages || 'Falha ao atualizar post',
         });
         return;
       }
@@ -75,7 +87,10 @@ export default function PostUpdateForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col p-4 w-full">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col p-4 w-full"
+    >
       <Input
         label="ID do Post"
         placeholder="Digite o ID do post a ser atualizado"

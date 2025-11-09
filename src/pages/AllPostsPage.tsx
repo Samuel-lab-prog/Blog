@@ -12,9 +12,9 @@ export default function Home() {
   const tags = useFetchTags();
 
   return (
-    <main className="absolute left-0 top-20 flex flex-col items-center ">
+    <main className="absolute left-0 top-20 flex flex-col w-full ">
       <section className="p-4 xl:p-12">
-        <h2 className="my-4 w-fit">Todos os posts</h2>
+        <h2 className="my-4 w-fit xl:text-5xl">Todos os posts</h2>
         <div className="max-w-md">
           <SelectInput
             label="Filtrar por categoria"

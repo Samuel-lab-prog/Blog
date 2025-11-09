@@ -17,8 +17,7 @@ const schema = z.object({
   tags: z.array(
     z.string().min(3, 'Cada tag deve ter pelo menos 3 caracteres')
   ),
-  excerpt: z
-    .string()
+  excerpt: z.string(),
 });
 
 export default function PostSubmitForm() {
