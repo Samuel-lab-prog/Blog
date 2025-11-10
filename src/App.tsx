@@ -23,7 +23,6 @@ export default function App() {
     brandName: 'The blog',
     links: [
       { label: 'Home', to: '/' },
-      { label: 'Sobre', to: '/about' },
       { label: 'Posts', to: '/posts' },
       { label: 'Login', to: '/signin' },
       ...(isAdmin ? [{ label: 'Admin', to: '/admin' }] : []),

@@ -10,9 +10,17 @@ export default function useFetchTags(): Tag[] {
     }
     const fetchTags = async () => {
       const response = await fetch(
-        `${API_URL}/tags`
+        `${API_URL}/posts/tags`
       );
+      if (!response.ok) {
+      console.error('❌ Erro na resposta:', response.status, await response.text());
+      return;
+    }
       const tags = await response.json();
+      if (!Array.isArray(tags)) {
+      console.error('❌ Resposta não é array:', tags);
+      return;
+    }
       setTags(tags);
       localStorage.setItem('tags', JSON.stringify(tags));
     };

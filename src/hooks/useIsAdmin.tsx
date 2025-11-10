@@ -12,7 +12,6 @@ export default function useIsAdmin() {
           credentials: 'include',
         });
         const data = await res.json().catch(() => ({}));
-        console.log('Dados recebidos:', data.isAdmin);
 
         if (!canceled) {
           setIsAdmin(Boolean(data.isAdmin));
