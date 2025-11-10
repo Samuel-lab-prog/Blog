@@ -25,7 +25,7 @@ export default function Home() {
       <section className="p-4 xl:p-12 flex flex-col items-start">
         <h2 className="my-4 lg:text-5xl">Últimos posts</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
-          {posts.map((post) => (
+          {Array.isArray(posts) && posts.map((post) => (
             <PostPreviewCard
               key={post.id}
               title={post.title}

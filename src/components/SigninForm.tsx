@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 import Input from './Input';
 import Button from './Button';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const schema = z.object({
   email: z
@@ -29,7 +30,7 @@ export default function SigninForm() {
   async function onSubmit(data: z.infer<typeof schema>) {
     try {
       const response = await fetch(
-        'http://localhost:5000/users/login',
+        `${API_URL}/users/login`,
         {
           method: 'POST',
           credentials: 'include',

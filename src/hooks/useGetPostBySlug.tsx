@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { Post } from '../types/types';
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function useGetPostBySlug(
   slug: string
@@ -25,7 +26,7 @@ export default function useGetPostBySlug(
     async function fetchPost() {
       try {
         const response = await fetch(
-          `http://localhost:5000/posts/${slug}`
+          `${API_URL}/posts/${slug}`
         );
         if (!response.ok) {
           console.error(

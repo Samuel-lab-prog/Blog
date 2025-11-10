@@ -5,6 +5,8 @@ import { marked } from 'marked';
 import Input from './Input';
 import TextArea from './TextAreaInput';
 import Button from './Button';
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 const schema = z.object({
   id: z.string().regex(/^\d+$/, 'ID deve ser um número válido'),
@@ -62,7 +64,7 @@ export default function PostUpdateForm() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/posts/${id}`,
+        `${API_URL}/posts/${id}`,
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },

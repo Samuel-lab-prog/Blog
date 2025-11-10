@@ -5,6 +5,8 @@ import { marked } from 'marked';
 import Input from './Input';
 import TextArea from './TextAreaInput';
 import Button from './Button';
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 const schema = z.object({
   title: z
@@ -33,7 +35,7 @@ export default function PostSubmitForm() {
 
   async function onSubmit(data: z.infer<typeof schema>) {
     try {
-      const response = await fetch('http://localhost:5000/posts', {
+      const response = await fetch(`${API_URL}/posts`, {
         credentials: 'include',
         method: 'POST',
         headers: {

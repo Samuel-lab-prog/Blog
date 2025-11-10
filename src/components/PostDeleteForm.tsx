@@ -3,6 +3,8 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Input from './Input';
 import Button from './Button';
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 const schema = z.object({
   title: z
@@ -25,7 +27,7 @@ export default function PostDeleteForm() {
   async function onSubmit(data: z.infer<typeof schema>) {
     try {
       const response = await fetch(
-        `http://localhost:5000/posts/${data.title}`,
+        `${API_URL}/posts/${data.title}`,
         {
           credentials: 'include',
           method: 'DELETE',

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function useIsAdmin() {
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
@@ -7,7 +8,7 @@ export default function useIsAdmin() {
 
     async function checkAdmin() {
       try {
-        const res = await fetch('http://localhost:5000/users/auth', {
+        const res = await fetch(`${API_URL}/users/auth`, {
           credentials: 'include',
         });
         const data = await res.json().catch(() => ({}));

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { Post } from '../types/types';
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 export default function useFetchPosts(
   limit?: number,
@@ -25,7 +27,7 @@ export default function useFetchPosts(
 
     const fetchPosts = async () => {
       try {
-        const url = new URL('http://localhost:5000/posts');
+        const url = new URL(`${API_URL}/posts`);
 
         if (limit) url.searchParams.append('limit', String(limit));
         if (tag && tag.trim() !== '')
