@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import type { Post } from '../types/types';
 const API_URL = import.meta.env.VITE_API_URL;
 
-
 export default function useFetchPosts(
   limit?: number,
   tag?: string | null

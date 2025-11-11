@@ -23,44 +23,47 @@
   h5 {
     @apply font-primary text-lg font-semibold;
   }
+  h6 {
+    @apply font-primary text-base font-semibold;
+  }
   p {
-    @apply font-secondary text-sm lg:text-base;
+    @apply text-sm lg:text-base;
   }
   li {
-    @apply font-secondary text-sm lg:text-base;
+    @apply text-sm lg:text-base;
   }
   i {
-    @apply font-secondary text-sm lg:text-base italic;
+    @apply text-sm lg:text-base;
   }
   span {
-    @apply font-secondary text-sm lg:text-base font-bold;
+    @apply text-sm lg:text-base;
   }
   input {
-    @apply font-secondary text-sm lg:text-base;
+    @apply text-sm lg:text-base;
   }
   label {
-    @apply font-secondary text-sm lg:text-base font-medium;
+    @apply text-sm lg:text-base;
   }
   select {
-    @apply font-secondary text-sm lg:text-base;
+    @apply text-sm lg:text-base;
   }
   textarea {
-    @apply font-secondary text-sm lg:text-base;
+    @apply text-sm lg:text-base;
   }
 }
 
 @layer components {
   .btn {
-    @apply font-secondary px-4 py-2 rounded transition-all cursor-pointer inline-flex items-center justify-center text-xs lg:text-sm;
+    @apply px-4 py-2 rounded transition-all cursor-pointer inline-flex items-center justify-center text-sm lg:text-base;
   }
   .btn-primary {
     @apply bg-neutral-900 text-gray-100 hover:opacity-75;
   }
   .btn-secondary {
-    @apply bg-transparent border border-gray-200 text-gray-200 hover:bg-gray-100 hover:text-black;
+    @apply bg-transparent border border-black text-black hover:bg-black/75;
   }
   .btn-disabled {
-    @apply cursor-not-allowed bg-neutral-900 text-gray-100 opacity-25;
+    @apply cursor-not-allowed opacity-75 bg-gray-300;
   }
   .anchor {
     @apply cursor-pointer hover:opacity-50 transition-opacity duration-200 text-sm lg:text-base;

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import PostPreviewCard from '../components/PostPreviewCard';
 import useFetchPosts from '../hooks/useFetchPosts';
 import useFetchTags from '../hooks/useFetchTags';
-import Button from '../components/Button';
+import PostPreviewCard from '../components/PostPreviewCard';
 import SelectInput from '../components/SelectInput';
+import Button from '../components/Button';
 
 export default function Home() {
   const [tag, setTag] = useState<string | null>(null);

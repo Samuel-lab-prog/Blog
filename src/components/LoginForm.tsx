@@ -4,8 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 import Input from './Input';
 import Button from './Button';
-const API_URL = import.meta.env.VITE_API_URL;
 
+const API_URL = import.meta.env.VITE_API_URL;
 const schema = z.object({
   email: z
     .string()
@@ -42,10 +42,7 @@ export default function SigninForm() {
       );
       if (!response.ok) {
         const errorData = await response.json();
-        if (
-          errorData.statusCode === 401 ||
-          errorData.statusCode === 404
-        ) {
+        if (errorData.statusCode !== 500) {
           setError('email', {
             type: 'manual',
             message: 'Email ou senha inválidos',
@@ -53,6 +50,16 @@ export default function SigninForm() {
           setError('password', {
             type: 'manual',
             message: 'Email ou senha inválidos',
+          });
+        }
+        else{
+          setError('email', {
+            type: 'manual',
+            message: 'Erro interno do servidor. Tente novamente mais tarde.',
+          });
+          setError('password', {
+            type: 'manual',
+            message: 'Erro interno do servidor. Tente novamente mais tarde.',
           });
         }
       } else {

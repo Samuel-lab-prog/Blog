@@ -1,7 +1,7 @@
 import PostPreviewCard from '../components/PostPreviewCard';
 import useFetchPosts from '../hooks/useFetchPosts';
 import useUser from '../hooks/useUser';
-import Button from '../components/Button';
+
 export default function Home() {
   const posts = useFetchPosts(3);
   const user = useUser();
@@ -16,20 +16,18 @@ export default function Home() {
           Esse é o meu blog pessoal, onde são compartilhadas ideias e
           experiências de um indivíduo chamado Samuel Gomes Monni.
         </p>
-        <Button to="about" className="w-fit">
-          Saiba mais sobre mim
-        </Button>
+
       </section>
       <section className="p-4 xl:p-12 flex flex-col items-start">
         <h2 className="my-4 lg:text-5xl">Últimos posts</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
-          {Array.isArray(posts) && posts.map((post) => (
+          { posts.map((post) => (
             <PostPreviewCard
               key={post.id}
               title={post.title}
               excerpt={post.excerpt}
               tags={post.tags}
-              postUrl={`/posts/${post.slug}`}
+              postUrl={`posts/${post.slug}`}
             />
           ))}
         </div>

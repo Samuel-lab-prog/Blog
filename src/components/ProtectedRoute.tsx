@@ -4,9 +4,8 @@ import useIsAdmin from '../hooks/useIsAdmin';
 export default function ProtectedRoute() {
   const isAuth = useIsAdmin();
 
-  if (isAuth === null) {
+  if (isAuth === null) 
     return <div>Verificando...</div>;
-  }
 
-  return isAuth ? <Outlet /> : <Navigate to="/signin" replace />;
+  return isAuth ? <Outlet /> : <Navigate to="/login" replace />;
 }

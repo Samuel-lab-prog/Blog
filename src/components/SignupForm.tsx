@@ -4,9 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 import Input from './Input';
 import Button from './Button';
+
 const API_URL = import.meta.env.VITE_API_URL;
-
-
 const schema = z.object({
   firstName: z
     .string()
@@ -54,6 +53,12 @@ export default function SignupForm() {
           setError('email', {
             type: 'manual',
             message: 'Email já está em uso',
+          });
+        }
+        else {
+          setError('email', {
+            type: 'manual',
+            message: 'Erro interno do servidor. Tente novamente mais tarde.',
           });
         }
       } else {
