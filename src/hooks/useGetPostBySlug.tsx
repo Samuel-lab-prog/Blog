@@ -2,13 +2,8 @@ import { useEffect, useState } from 'react';
 import type { Post } from '../types/types';
 const API_URL = import.meta.env.VITE_API_URL;
 
-export default function useGetPostBySlug(
-  slug: string
-): Omit<Post, 'authorId'> | null {
-  const [post, setPost] = useState<Omit<
-    Post,
-    'authorId'
-  > | null>(null);
+export default function useGetPostBySlug(slug: string): Omit<Post, 'authorId'> | null {
+  const [post, setPost] = useState<Omit<Post, 'authorId'> | null>(null);
   useEffect(() => {
     if (!slug) return;
     const storedPost = localStorage.getItem(`post_${slug}`);
