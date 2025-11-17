@@ -23,7 +23,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
           { posts.map((post) => (
             <PostPreviewCard
-              key={post.id}
+              key={post.title}
               title={post.title}
               excerpt={post.excerpt}
               tags={post.tags}

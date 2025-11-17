@@ -2,8 +2,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
-import Input from './Input';
-import Button from './Button';
+import Input from '../Input';
+import Button from '../Button';
 
 const API_URL = import.meta.env.VITE_API_URL;
 const schema = z.object({
@@ -62,7 +62,7 @@ export default function SignupForm() {
           });
         }
       } else {
-        navigate('/signin');
+        navigate('/login');
       }
     } catch (error) {
       console.error('Error during request:', error);

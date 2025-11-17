@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import PostSubmitForm from '../components/PostSubmitForm';
-import PostDeleteForm from '../components/PostDeleteForm';
-import PostUpdateForm from '../components/PostUpdateForm';
+import PostSubmitForm from '../components/forms/PostSubmitForm';
+import PostDeleteForm from '../components/forms/PostDeleteForm';
+import PostUpdateForm from '../components/forms/PostUpdateForm';
 import Button from '../components/Button';
 
 export default function AdminPage() {

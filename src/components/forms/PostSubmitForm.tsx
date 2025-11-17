@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { marked } from 'marked';
-import Input from './Input';
-import TextArea from './TextAreaInput';
-import Button from './Button';
+import Input from '../Input';
+import TextArea from '../TextAreaInput';
+import Button from '../Button';
 const API_URL = import.meta.env.VITE_API_URL;
 
 

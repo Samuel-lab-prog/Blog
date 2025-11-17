@@ -33,7 +33,7 @@ export default function Home() {
           {posts.length === 0 && <p>Nenhum post encontrado.</p>}
           {posts.map((post) => (
             <PostPreviewCard
-              key={post.id}
+              key={post.title}
               title={post.title}
               excerpt={post.excerpt}
               tags={post.tags}

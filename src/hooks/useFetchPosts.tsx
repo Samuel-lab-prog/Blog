@@ -1,26 +1,26 @@
 import { useState, useEffect } from 'react';
 import type { Post } from '../types/types';
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function useFetchPosts(
   limit?: number,
   tag?: string | null
-): Omit<Post, 'content' | 'authorId'>[] {
+): Omit<Post, 'content' | 'authorId' | 'id'>[] {
   const [posts, setPosts] = useState<
-    Omit<Post, 'content' | 'authorId'>[]
+    Omit<Post, 'content' | 'authorId' | 'id'>[]
   >([]);
 
+  const cacheKey = `posts_cache_${limit || 'all'}_${tag || 'none'}`;
+
   useEffect(() => {
-    const storageKey = `posts_${limit || 'all'}_${tag || 'all'}`;
-    const cached = localStorage.getItem(storageKey);
+    const cached = localStorage.getItem(cacheKey);
     if (cached) {
       try {
         const parsed = JSON.parse(cached);
-        if (Array.isArray(parsed)) {
-          setPosts(parsed);
-        }
+        setPosts(parsed);
       } catch {
-        localStorage.removeItem(storageKey);
+        console.warn("Cache inválido, ignorando");
       }
     }
 
@@ -30,21 +30,23 @@ export default function useFetchPosts(
 
         if (limit) url.searchParams.append('limit', String(limit));
         if (tag && tag.trim() !== '')
-          url.searchParams.append('tag', tag);
+          url.searchParams.append('tag', String(tag));
 
         const response = await fetch(url.toString());
-        if (!response.ok)
-          throw new Error(`Erro HTTP: ${response.status}`);
+        if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+
         const freshPosts = await response.json();
+
         setPosts(freshPosts);
-        localStorage.setItem(storageKey, JSON.stringify(freshPosts));
+
+        localStorage.setItem(cacheKey, JSON.stringify(freshPosts));
       } catch (error) {
         console.error('Erro ao buscar posts:', error);
       }
     };
 
     fetchPosts();
-  }, [limit, tag]);
+  }, [limit, tag, cacheKey]);
 
   return posts;
 }
