@@ -1,4 +1,4 @@
-import PostSubmitForm from '../components/PostSubmitForm';
+import PostSubmitForm from '../components/forms/PostSubmitForm';
 
 export default function PostSubmitPage() {
   return (
